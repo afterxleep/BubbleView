@@ -1,0 +1,104 @@
+// BubbleView Demo Playground
+
+import SwiftUI
+import PlaygroundSupport
+import BubbleView // Assuming the package is built/available
+
+struct PlaygroundContentView: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 30) {
+                Text("BubbleView Examples").font(.largeTitle).padding(.bottom)
+
+                // Example 1: Basic Top Arrow
+                BubbleView(
+                    arrowPositionPercent: 10, // Top edge, near left
+                    fillColor: .green,
+                    borderColor: .black,
+                    borderWidth: 1,
+                    paddingAmount: 15
+                ) {
+                    Text("Hello! This is a bubble with the arrow near the top-left corner.")
+                        .foregroundColor(.white)
+                }
+                .frame(width: 250, alignment: .leading) // Constrain width for demo
+
+                // Example 2: Right Arrow, Custom Content
+                BubbleView(
+                    arrowLength: 20,
+                    arrowWidth: 40,
+                    arrowPositionPercent: 35, // Right edge
+                    cornerRadius: 5,
+                    fillColor: .orange,
+                    borderColor: .black,
+                    borderWidth: 2
+                ) {
+                    VStack {
+                        Image(systemName: "star.fill").foregroundColor(.yellow)
+                        Text("Content determines the size.")
+                        Text("Padding adds space around it.")
+                    }
+                    .padding(5) // Inner padding for VStack elements
+                    .foregroundColor(.black)
+                }
+                .frame(width: 300, alignment: .leading)
+
+                // Example 3: Bottom Arrow
+                 BubbleView(
+                     arrowPositionPercent: 65, // Bottom edge
+                     cornerRadius: 20,
+                     fillColor: .purple,
+                     paddingAmount: 8
+                 ) {
+                     Text("Bottom arrow bubble.")
+                         .font(.headline)
+                         .foregroundColor(.white)
+                 }
+                 .frame(width: 200, alignment: .leading)
+
+                // Example 4: Left Arrow, Sharp Corners
+                BubbleView(
+                    arrowPositionPercent: 85, // Left edge
+                    cornerRadius: 0, // Sharp corners
+                    fillColor: Color(white: 0.9),
+                    borderColor: .gray,
+                    borderWidth: 1
+                ) {
+                    Text("Short text.")
+                        .font(.caption)
+                        .foregroundColor(.black)
+                }
+                .frame(width: 150, alignment: .leading)
+
+                // Example 5: Far Right Position (Clamped)
+                BubbleView(
+                    arrowPositionPercent: 99.9, // Right edge, far end
+                    fillColor: .red,
+                    cornerRadius: 10
+                ) {
+                    Text("Arrow clamped to fit on the flat right edge.")
+                        .foregroundColor(.white)
+                }
+                .frame(width: 300, alignment: .leading)
+
+                 // Example 6: Small Bubble
+                BubbleView(
+                    arrowPositionPercent: 20, // Top edge
+                    fillColor: .cyan,
+                    cornerRadius: 4,
+                    paddingAmount: 5
+                ) {
+                    Text("Tiny")
+                        .foregroundColor(.black)
+                }
+                .frame(width: 80, alignment: .leading)
+
+            }
+            .padding()
+        }
+        .frame(width: 400, height: 800) // Set frame for playground live view
+    }
+}
+
+// Set the live view for the playground
+PlaygroundPage.current.setLiveView(PlaygroundContentView()) 
