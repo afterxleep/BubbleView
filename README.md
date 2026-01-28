@@ -4,7 +4,7 @@
 
 A SwiftUI view that displays content within a customizable chat-bubble shape with an arrow pointer.
 
-<img src="https://raw.githubusercontent.com/afterxleep/BubbleView/main/buble.gif" width="300">
+<img src="https://raw.githubusercontent.com/afterxleep/BubbleView/main/bubble-demo.gif" width="300">
 
 
 ## Features
