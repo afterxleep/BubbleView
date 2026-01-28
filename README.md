@@ -14,6 +14,9 @@ A SwiftUI view that displays content within a customizable chat-bubble shape wit
     -   Length (`arrowLength`)
     -   Width (`arrowWidth`)
     -   Position along the bubble's edge (`arrowPositionPercent`, calculated along flat edges).
+    -   Bend (`bend`) for a shark-fin style (left/right lean).
+    -   Side curvature (`finSideCurve`) for curved fin edges.
+    -   Tip rounding (`roundTip`) for a rounded fin tip.
 -   Customizable bubble appearance:
     -   Corner radius (`cornerRadius`).
     -   Fill color (`fillColor`).
@@ -66,6 +69,9 @@ struct ContentView: View {
                 arrowWidth: 30,
                 arrowPositionPercent: 10, // Near top-left corner
                 cornerRadius: 12,
+                bend: 0.35,
+                finSideCurve: 0.6,
+                roundTip: true,
                 fillColor: .blue,
                 borderColor: .black,
                 borderWidth: 1,
@@ -79,6 +85,9 @@ struct ContentView: View {
             BubbleView(
                 arrowPositionPercent: 60, // Bottom edge
                 cornerRadius: 0, // Sharp corners
+                bend: -0.25,
+                finSideCurve: 0.4,
+                roundTip: true,
                 fillColor: Color(white: 0.95),
                 borderColor: .gray,
                 borderWidth: 0.5
@@ -103,6 +112,10 @@ You can customize the appearance and behavior of the `BubbleView` using its init
 -   `arrowWidth`: `CGFloat` - The width of the base of the arrow. Default: `30`.
 -   `arrowPositionPercent`: `CGFloat` - A percentage (0-100) determining the arrow's center position along the *flat* perimeter of the bubble (top -> right -> bottom -> left). Default: `10`. The position is clamped to ensure the arrow fits on a flat edge.
 -   `cornerRadius`: `CGFloat` - The radius of the rounded corners. Default: `10`.
+-   `bend`: `CGFloat` - Fin bend amount. `0` is straight; positive bends right, negative bends left. Values beyond `1` push the tip further along the edge. Default: `0`.
+-   `finSideCurve`: `CGFloat` - Curvature of the fin sides. `0` keeps sides straight; higher values curve the long side outward and short side inward. Default: `0`.
+-   `finTipRadius`: `CGFloat` - Radius of the fin tip rounding when `roundTip` is true. Default: `.greatestFiniteMagnitude`.
+-   `roundTip`: `Bool` - Enable rounded fin tip. Default: `false`.
 -   `fillColor`: `Color` - The background color of the bubble. Default: `.blue`.
 -   `borderColor`: `Color` - The color of the bubble's outline. Default: `.clear`.
 -   `borderWidth`: `CGFloat` - The width of the bubble's outline. Default: `0`.
